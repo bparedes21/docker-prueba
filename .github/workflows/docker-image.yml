@@ -1,0 +1,25 @@
+name: Docker Compose
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Compose
+      run: docker-compose -v
+
+
+
+    - name: Build and Run Docker Compose
+      run: docker-compose up -d
+
+    - name: Show Container Logs
+      run: docker-compose logs
